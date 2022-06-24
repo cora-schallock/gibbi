@@ -1,0 +1,34 @@
+# based on daofind.param
+X_IMAGE_DBL
+Y_IMAGE_DBL
+# MAG_BEST
+CLASS_STAR
+FLUX_WIN
+PIXEL_SCALE 0.005 # arcsec
+SEEING_FWHM .17 #
+DETECT_MINAREA 6 # Minimum area of connected pixels in an object.
+DEBLEND_NTHRESH 1 # the number of thresholds the intensity
+
+#Gebhardt and Kissler-Patig (1999) used SE to search for Globular clusters in HST (VI) data.
+#Globular clusters are those objects with an mag err < 0.1, V-I between 0 and 2, ellipticity < 0.5,
+#FWHM between 1 and 4 pixels and ’nonstar’ classification. They estimate a constant contamination
+#from background galaxies
+
+#Nonino et al. (1999) describe the SE program in detail, especially the detection process. The
+#star galaxy separation is less stringent and said to favor complete star catalogs at class > 0.5
+#and more complete galaxy catalogs at class < 0.75. They present a flag list of SE. Parameters
+#used:BACK SIZE 64 (17”), THRESH 0.6 σ. They use RMS images as weight maps (made by
+#Weight watchers routine). MAG AUTO is preferred and it is explained why. Good paper on the
+#behavior of SE
+
+#Teplitz et al. (1998) used SE on NICMOS data with MIN AREA 6 and used the FWHM of
+#object, provided the were bright enough for a reliable estimate, to resolve stars from galaxies. All
+#fainter objects were assumed to be galaxies.
+
+#Lanzetta et al. (1996) use SE on HST/HDF images. Detection is in the I band. The FWHM
+#smoothing was 0.12 arcsec (approx width PSF) to aid detection of faint sources. Finally there
+#is a reference as to why you should bother to smooth again with approximately the PSF: Irwin
+#(1985).MIN AREA 10 THRESH 1.4 σ and surprisingly a CLEAN PARAM pf 2.0 to get rid of
+#closely-packed objects (taken to be one object) BACK SIZE was an unusual 41x41 pixels. As
+#detection was done in the I band image, photometry was done in dual mode for the rest of the
+#bands.

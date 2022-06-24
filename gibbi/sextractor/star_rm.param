@@ -1,0 +1,15 @@
+# based on daofind.param
+#X_IMAGE_DBL
+#Y_IMAGE_DBL
+XWIN_IMAGE
+YWIN_IMAGE
+#X_IMAGE
+#Y_IMAGE
+MAG_BEST
+CLASS_STAR
+A_IMAGE
+B_IMAGE
+THETA_IMAGE
+
+##Although they are slower, it is recommended to use whenever possible windowed position parameters instead of their isophotal equivalents; the measurements they provide are generally much more accurate (Fig. 7). The centroiding accuracy of XWIN_IMAGE and YWIN_IMAGE is actually very close to that of PSF-fitting on focused and properly sampled star images. Windowed measurements can also be applied to galaxies. It has been verified that for isolated objects with Gaussian-like profiles, their accuracy is close to the theoretical limit set by image noise
+#SOURCE: https://sextractor.readthedocs.io/en/latest/PositionWin.html
