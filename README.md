@@ -1,3 +1,3 @@
 # gibbi
 
-TODO: Write a readme
+TODO: Add a README
