@@ -11,23 +11,14 @@ def row_to_band_dict(the_row):
     
     #if row is missing, will be nan
     
-    if the_row['name'] == 'NGC1097_i':
-    """
-    for each_key in BAND_DICT_KEYS:
-        if each_key in the_row:
-            #print(type(the_row[each_key]))
-            gal_dict[each_key] = the_row[each_key]
-            
-    if the_row['name'] == 'NGC1097_i':
-        print(the_row['name'])
-        for each_key in gal_dict:
-            print(np.isnan(gal_dict[each_key]))
-            
-    if the_row['name'] == 'NGC1093_g':
-        print(the_row['name'])
-        for each_key in gal_dict:
-            print(np.isnan(gal_dict[each_key]))
-    """
+    if 'name' in the_row:
+        [gal_name,gal_band] = the_row['name'].strip().rsplit("_",1)
+    
+    for key in BAND_DICT_KEYS:
+        if key in the_row and not np.isnan(the_row[key]):
+            gal_dict[key] = the_row[key]
+
+    return gal_name, gal_band, gal_dict
 
 
 #functions to read files:
@@ -37,4 +28,11 @@ def read_galaxy_csv(csv_path):
     df = pd.read_csv(csv_path,encoding = 'ISO-8859-1')
     
     for index, row in df.iterrows():
-        row_to_band_dict(row)
+        gal_name, gal_band, gal_dict = row_to_band_dict(row)
+        
+        if gal_name != "" and gal_band != "" and len(gal_dict) == len(BAND_DICT_KEYS):
+            if gal_name not in csv_dict:
+                csv_dict[gal_name] = dict()
+                
+            csv_dict[gal_name][gal_band] = gal_dict
+    return csv_dict
