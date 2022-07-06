@@ -1,5 +1,7 @@
+import os
 import pandas as pd
 import numpy as np
+
 
 from constants import BAND_DICT_KEYS
 from convert import can_float
@@ -36,3 +38,9 @@ def read_galaxy_csv(csv_path):
                 
             csv_dict[gal_name][gal_band] = gal_dict
     return csv_dict
+
+#folder helper
+def check_if_folder_exists_and_create(path):
+    '''check if folder exists and if not, create it'''
+    if not os.path.exists(path):
+        os.makedirs(path)
